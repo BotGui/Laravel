@@ -9,12 +9,12 @@ class Season extends Model
 {
     use HasFactory;
 
-    public function serie()
+    public function series()
     {
         return $this->belongsTo(Serie::class);
     }
 
-    public function episode()
+    public function episodes()
     {
         return $this->hasMany(Episode::class);
     }
