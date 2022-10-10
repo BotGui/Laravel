@@ -11,7 +11,7 @@ class SeriesController
 {
     public function index()
     {
-        $series = Serie::query()->orderBy('nome')->get();
+        $series = Serie::all();
 
         return view('series.index', compact('series'));
     }
@@ -36,6 +36,7 @@ class SeriesController
 
     public function edit(Serie $series)
     {
+        dd($series->temporadas);
         return view('series.edit')->with('series', $series);
     }
 
