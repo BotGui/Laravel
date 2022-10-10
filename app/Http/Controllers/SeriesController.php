@@ -32,4 +32,17 @@ class SeriesController
        $series->delete();
        return redirect()->route('series.index');
     }
+
+    public function edit(Serie $series)
+    {
+        return view('series.edit')->with('series', $series);
+    }
+
+    public function update(Serie $series, Request $request)
+    {
+        $series->fill($request->all());
+        $series->save();
+
+        return redirect()->route('series.index');
+    }
 }
