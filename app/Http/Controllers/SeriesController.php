@@ -6,6 +6,7 @@ use App\Models\Series;
 use App\Http\Requests\SeriesFormRequest;
 use App\Models\Episode;
 use App\Models\Season;
+use App\Repositories\SeriesRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,28 +24,9 @@ class SeriesController
         return view('series.create');
     }
 
-    public function store(SeriesFormRequest $request)
+    public function store(SeriesFormRequest $request, SeriesRepository $repository)
     {
-        $serie   = Series::create($request->all());
-        $seasons = [];
-        for ($i = 1; $i <= $request->seasonQty; $i++) {
-            $seasons[] =[
-                'series_id' => $serie->id,
-                'number'    => $i,
-            ];
-        }
-        Season::insert($seasons);
-
-        $episodes = [];
-        foreach ($serie->seasons as $season) {
-            for ($j = 1; $j <= $request->episodeQty; $j++) { 
-                $episodes[] = [
-                    'season_id' => $season->id,
-                    'number'    => $j,
-                ];  
-            } 
-        }
-        Episode::insert($episodes);
+        $repository->add($request);
 
         return redirect()->route('series.index');
     }
