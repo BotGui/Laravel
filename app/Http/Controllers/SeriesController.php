@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Series;
 use App\Http\Requests\SeriesFormRequest;
+use App\Models\Episode;
+use App\Models\Season;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,19 +25,26 @@ class SeriesController
 
     public function store(SeriesFormRequest $request)
     {
-        $serie = Series::create($request->all());
+        $serie   = Series::create($request->all());
+        $seasons = [];
+        for ($i = 1; $i <= $request->seasonQty; $i++) {
+            $seasons[] =[
+                'series_id' => $serie->id,
+                'number'    => $i,
+            ];
+        }
+        Season::insert($seasons);
 
-        for ($i = 1; $i < $request->seasonQty; $i++) {
-            $season = $serie->seasons()->create([
-                'number' => $i,
-            ]);
-
-            for ($j = 1; $j < $request->episodeQty; $j++) { 
-                $season->episodes()->create([
-                    'number' => $j,
-                ]);  
+        $episodes = [];
+        foreach ($serie->seasons as $season) {
+            for ($j = 1; $j <= $request->episodeQty; $j++) { 
+                $episodes[] = [
+                    'season_id' => $season->id,
+                    'number'    => $j,
+                ];  
             } 
         }
+        Episode::insert($episodes);
 
         return redirect()->route('series.index');
     }
@@ -48,11 +57,10 @@ class SeriesController
 
     public function edit(Series $series)
     {
-        dd($series->temporadas);
         return view('series.edit')->with('series', $series);
     }
 
-    public function update(Series $series, SeriesFormRequest $request)
+    public function update(Series $series, SeriesFormRequest $request, Season $seasons, Episode $episodes)
     {
         $series->fill($request->all());
         $series->save();
