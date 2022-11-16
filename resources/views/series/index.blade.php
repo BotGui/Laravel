@@ -1,11 +1,13 @@
 <x-layout title="Séries">
-	<a href="{{ route('series.create') }}" class="btn btn-dark mb-2">Adicionar</a>
 
-	<ul class="list-group">
+	<a href="{{ route('series.create') }}" class="btn btn-dark mb-2">Adicionar</a>
+    <a href="{{ route('user.index') }}" class="btn btn-primary mb-2">Usuário</a>
+
+	<ul class="list-group mb-2">
 		@foreach ($series as $serie)
 		<li class="list-group-item d-flex justify-content-between align-items-center">
 			<a href="{{ route('seasons.index', $serie->id) }}">{{ $serie->nome }}</a>
-			
+
 			<span class="d-flex">
 				<a href="{{ route('series.edit', $serie->id)}}" class="btn btn-primary btn-sm">E</a>
 
@@ -18,4 +20,7 @@
 		</li>
 		@endforeach
 	</ul>
+
+    <a href="{{ route('logout') }}" class="btn btn-danger mb-2">Sair</a>
+
 </x-layout>

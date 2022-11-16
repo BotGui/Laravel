@@ -22,7 +22,7 @@ class EpisodeController extends Controller
 
         $season->push();
 
-        // return redirect()->route('episodes.index'); 
+        // return redirect()->route('episodes.index');
         return to_route('episodes.index', $season->id);
     }
 }

@@ -2,18 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\Autenticador;
 use App\Models\Series;
 use App\Http\Requests\SeriesFormRequest;
 use App\Models\Episode;
 use App\Models\Season;
 use App\Repositories\SeriesRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class SeriesController
 {
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect()->route('login.index');
+        }
+
         $series = Series::all();
 
         return view('series.index', compact('series'));
@@ -21,6 +27,10 @@ class SeriesController
 
     public function create()
     {
+        if (!Auth::check()) {
+            return redirect()->route('login.index');
+        }
+
         return view('series.create');
     }
 
