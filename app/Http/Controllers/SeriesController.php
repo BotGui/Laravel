@@ -17,7 +17,7 @@ class SeriesController
     public function index()
     {
         if (!Auth::check()) {
-            return redirect()->route('login.index');
+            return redirect()->route('login');
         }
 
         $series = Series::all();
@@ -28,7 +28,7 @@ class SeriesController
     public function create()
     {
         if (!Auth::check()) {
-            return redirect()->route('login.index');
+            return redirect()->route('login');
         }
 
         return view('series.create');

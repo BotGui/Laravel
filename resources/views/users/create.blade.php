@@ -12,9 +12,19 @@
             <input type="email" name="email" id="email" class="form-control">
         </div>
 
-        <div class="form-group mb-2">
-            <label for="password" class="form-label">Senha:</label>
-            <input type="password" name="password" id="password" class="form-control">
+        <div class="row mb-2">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="password" class="form-label">Senha *</label>
+                    <input type="password" name="password" id="password" class="form-control">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="password" class="form-label">Confirme a senha *</label>
+                    <input type="password" name="passwordconfirmed" id="passwordconfirmed" class="form-control">
+                </div>
+            </div>
         </div>
 
         <button class="btn btn-primary">Cadastrar</button>

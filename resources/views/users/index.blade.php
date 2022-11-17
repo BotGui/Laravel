@@ -1,4 +1,4 @@
-<x-layout title="Usuário {!! $users->name !!}">
+<x-layout title="Usuário: {!! $users->name !!}">
 
     <form method="post">
         @csrf
@@ -28,7 +28,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="password" class="form-label">Confirme a senha *</label>
-                                    <input type="passwordconfirmed" name="passwordconfirmed" id="passwordconfirmed" class="form-control">
+                                    <input type="password" name="passwordconfirmed" id="passwordconfirmed" class="form-control">
                                 </div>
                             </div>
                         </div>

@@ -9,7 +9,9 @@
 			<a href="{{ route('seasons.index', $serie->id) }}">{{ $serie->nome }}</a>
 
 			<span class="d-flex">
-				<a href="{{ route('series.edit', $serie->id)}}" class="btn btn-primary btn-sm">E</a>
+				<a href="{{ route('series.edit', $serie->id)}}" class="btn btn-primary btn-sm">
+                    <i class="img-thumbnail" style="background-image: url(/public/img/teste.png)"></i>
+                </a>
 
 				<form action="{{ route('series.destroy', $serie->id) }}" method="post" class="ms-2">
 					@csrf

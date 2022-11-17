@@ -13,8 +13,6 @@ class UsersController
     {
         $users = Auth::user();
 
-
-
         return view('users.index',compact('users'));
     }
 
