@@ -1,6 +1,6 @@
 <x-layout title="Séries">
 
-	<a href="{{ route('series.create') }}" class="btn btn-dark mb-2">Adicionar</a>
+	<a href="{{ route('series.create') }}" class="btn btn-secondary mb-2">Adicionar</a>
     <a href="{{ route('user.index') }}" class="btn btn-primary mb-2">Usuário</a>
 
 	<ul class="list-group mb-2">

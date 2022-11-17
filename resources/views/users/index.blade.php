@@ -47,7 +47,7 @@
 
         <button class="btn btn-primary">Salvar</button>
 
-        <a class="btn btn-dark" href="{{ route('series.index') }}">Home</a>
+        <a class="btn btn-secondary" href="{{ route('series.index') }}">Home</a>
 
     </form>
 </x-layout>
