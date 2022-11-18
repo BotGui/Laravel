@@ -1,7 +1,7 @@
 <x-layout title="Nova série">
 	<form action="{{ route('series.store') }}" method="post">
     @csrf
-	
+
 	<div class="row mb-3">
 		<div class="col-8">
 			<label for="nome" class="form-label">Nome* :</label>
@@ -17,7 +17,7 @@
 			<label for="episodeQty" class="form-label">Episodeos :</label>
 			<input type="text" id="episodeQty" name="episodeQty" class="form-control" value="{{ old('episodeQty') }}">
 		</div>
-	</div>	
+	</div>
     <button type="submit" class="btn btn-dark">Adicionar</button>
 </form>
 
